@@ -1,0 +1,22 @@
+name: lancast_workspace
+description: LanCast monorepo workspace
+publish_to: none
+
+environment:
+  sdk: ^3.10.1
+
+workspace:
+  - apps/viewer
+  - apps/sender
+  - packages/lancast_core
+  - packages/lancast_discovery
+  - packages/lancast_signaling
+  - packages/lancast_webrtc
+  - packages/lancast_arena
+
+dependencies:
+  lancast_core: ^0.1.0
+  lancast_discovery: ^0.1.0
+  lancast_signaling: ^0.1.0
+  lancast_webrtc: ^0.1.0
+  lancast_arena: ^0.1.0

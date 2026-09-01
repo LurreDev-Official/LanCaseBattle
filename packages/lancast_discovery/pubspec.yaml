@@ -1,0 +1,16 @@
+name: lancast_discovery
+description: LAN room discovery via UDP broadcast (mDNS-ready seam).
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.10.1
+
+resolution: workspace
+
+dependencies:
+  lancast_core: ^0.1.0
+
+dev_dependencies:
+  lints: ^6.0.0
+  test: ^1.25.6
