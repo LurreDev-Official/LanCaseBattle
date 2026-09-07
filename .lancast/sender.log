@@ -1,1 +1,6 @@
-Downloading darwin-x64/framework tools...                       
+Downloading darwin-x64/framework tools...                         190.4s
+Downloading darwin-x64/gen_snapshot tools...                       48.1s
+Downloading darwin-x64-profile/framework tools...                  50.2s
+Downloading darwin-x64-profile tools...                            11.0s
+Downloading darwin-x64-profile/gen_snapshot tools...               53.8s
+Downloading darwin-x64-release/framework tools...               
