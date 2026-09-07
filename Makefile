@@ -26,7 +26,9 @@ run-manual:
 run-apps:
 	./scripts/run_release_apps.sh
 
-export export-macos:
+export: export-macos
+
+export-macos:
 	./scripts/export.sh macos
 
 export-windows:

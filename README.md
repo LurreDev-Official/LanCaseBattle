@@ -39,6 +39,9 @@ Ada **2 peran** dalam satu sesi LanCast:
 **Setup satu kali:**
 
 ```bash
+# Tambahkan Flutter ke PATH (jika muncul 'command not found: flutter')
+export PATH="$HOME/development/flutter_backup_old/bin:$PATH"
+
 # Aktifkan Flutter macOS desktop
 flutter config --enable-macos-desktop
 
@@ -81,15 +84,24 @@ Saat pertama kali membuka LanCast Participant, macOS akan meminta izin:
 
 > ⚠️ Tanpa izin Screen Recording, layar tidak bisa dibagikan ke Arena.
 
-### Cara Pakai (macOS)
+### Cara Akses & Penggunaan (macOS)
 
-1. **Arena** terbuka → room dibuat otomatis (lihat kode room di layar)
-2. **Participant** → klik **Find Battle Room** → room Arena muncul → klik
-3. **Participant** → klik **Request Join**
-4. **Arena** → notifikasi masuk → klik **Approve**
-5. **Participant** → klik **Start Share** → layar mulai dibagikan 🎉
+1. **Buka Aplikasi**:
+   Jalankan `make run` di Terminal atau double-click `LanCast.command`. Dua jendela akan terbuka secara bersamaan: **LanCast Arena (Viewer)** dan **LanCast Participant (Sender)**.
 
-> 💡 Room tidak muncul? Klik **Join via Link** di Participant dan paste link dari Arena.
+2. **Akses & Inisialisasi Arena (Host/Viewer)**:
+   - **LanCast Arena** secara otomatis membuat Battle Room baru (konfigurasi `LANCAST_AUTO_ROOM=true`).
+   - Server lokal berjalan secara otomatis di port TCP **`17890`** (Signaling) dan UDP **`17891`** (Room Discovery).
+   - Di layar Arena akan ditampilkan **Room ID**, **PIN Join**, serta status listener server.
+
+3. **Menghubungkan Participant (Sender)**:
+   - **Pencarian Otomatis**: Pada jendela **LanCast Participant**, klik tombol **Find Battle Room**. Room Arena yang aktif akan otomatis muncul via scanning UDP lokal. Klik room tersebut.
+   - **Koneksi Manual (Via Link/IP)**: Jika room tidak terdeteksi otomatis, klik tombol **Join via Link / Manual IP** di Participant, lalu masukkan link/IP yang tertera di layar Arena (misal: `ws://<IP_Mac_Host>:17890`).
+
+4. **Approval & Screen Share**:
+   - Di jendela **Participant**, klik **Request Join**.
+   - Di jendela **Arena**, akan muncul notifikasi permintaan bergabung. Klik **Approve**.
+   - Di jendela **Participant**, tombol **Start Share** akan aktif. Klik **Start Share** untuk mulai membagikan layar secara real-time 🎉
 
 ### Troubleshooting macOS
 
@@ -178,15 +190,24 @@ Saat pertama kali dijalankan, Windows Firewall akan menampilkan popup:
 
 Buka **Windows Defender Firewall** → **Advanced Settings** → **Inbound Rules** → **New Rule** → Port → masukkan `17890` (TCP) dan `17891` (UDP).
 
-### Cara Pakai (Windows)
+### Cara Akses & Penggunaan (Windows)
 
-1. **Arena** terbuka → room dibuat otomatis (lihat kode room di layar)
-2. **Participant** → klik **Find Battle Room** → room Arena muncul → klik
-3. **Participant** → klik **Request Join**
-4. **Arena** → notifikasi masuk → klik **Approve**
-5. **Participant** → klik **Start Share** → layar mulai dibagikan 🎉
+1. **Buka Aplikasi**:
+   Double-click `LanCast.bat` di File Explorer (atau jalankan script via PowerShell/CMD). Dua jendela CMD dan aplikasi akan terbuka secara bersamaan: **LanCast Arena (Viewer)** dan **LanCast Participant (Sender)**.
 
-> 💡 Room tidak muncul? Klik **Join via Link** di Participant dan paste link dari Arena.
+2. **Akses & Inisialisasi Arena (Host/Viewer)**:
+   - **LanCast Arena** secara otomatis membuat Battle Room baru.
+   - Server lokal otomatis mendengarkan koneksi di port TCP **`17890`** (Signaling WebSocket) dan UDP **`17891`** (Room Discovery).
+   - Di layar Arena akan ditampilkan **Room ID**, **PIN Join**, serta status listener server.
+
+3. **Menghubungkan Participant (Sender)**:
+   - **Pencarian Otomatis**: Pada jendela **LanCast Participant**, klik tombol **Find Battle Room**. Room Arena yang aktif akan otomatis muncul via scanning UDP lokal. Klik room tersebut.
+   - **Koneksi Manual (Via Link/IP)**: Jika room tidak terdeteksi otomatis, klik tombol **Join via Link / Manual IP** di Participant, lalu masukkan link/IP yang tertera di layar Arena (misal: `ws://<IP_Windows_Host>:17890`).
+
+4. **Approval & Screen Share**:
+   - Di jendela **Participant**, klik **Request Join**.
+   - Di jendela **Arena**, akan muncul notifikasi permintaan bergabung. Klik **Approve**.
+   - Di jendela **Participant**, tombol **Start Share** akan aktif. Klik **Start Share** untuk mulai membagikan layar secara real-time 🎉
 
 ### Troubleshooting Windows
 
@@ -195,7 +216,7 @@ Buka **Windows Defender Firewall** → **Advanced Settings** → **Inbound Rules
 | Room tidak muncul | Pastikan kedua app di Wi-Fi yang sama; cek firewall UDP 17891 |
 | Build gagal / error C++ | Install Visual Studio 2022 + workload *Desktop development with C++* |
 | `flutter` tidak dikenal | Tambahkan Flutter ke PATH, atau set `FLUTTER_BIN` di `config\lancast.env` |
-| Join gagal | Buka TCP port **17890** di Windows Firewall |
+| Join gagal | Buka TCP port **192.168.1.244:17890** di Windows Firewall |
 | `make` tidak dikenal | Gunakan perintah manual di [`docs/RUN.md`](docs/RUN.md) atau install `make` via [Chocolatey](https://chocolatey.org/): `choco install make` |
 
 ### Menghentikan Sesi (Windows)
